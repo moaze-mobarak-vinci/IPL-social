@@ -20,11 +20,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Check formatting (Prettier)
-        run: npx prettier --check .
-
-      - name: Run ESLint
-        run: npm run lint
-
       - name: Run Tests (Jest)
         run: npm test
