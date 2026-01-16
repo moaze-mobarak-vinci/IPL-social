@@ -1,3 +1,7 @@
 export function validateEmail(email: string): boolean {
-    return true; // Retourne true alors que le test attend false
+    // Règle a : Il doit contenir au moins un @
+    if (!email.includes('@')) {
+        return false;
+    }
+    return true;
 }
