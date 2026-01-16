@@ -1,15 +1,20 @@
 export function validateEmail(email: string): boolean {
-    // Règle c : Il ne peut contenir aucun espace
+    // Règle c : Aucun espace
     if (email.includes(' ')) return false;
 
-    // Règle a : Il doit contenir au moins un @
+    // Règle a : Présence du @
     if (!email.includes('@')) return false;
 
     const parts = email.split('@');
-    const domain = parts[parts.length - 1];
+    const localPart = parts[0];
+    const domainPart = parts[parts.length - 1];
 
-    // Règle b : au moins un point dans le domaine et pas à la fin
-    if (!domain.includes('.') || domain.endsWith('.')) {
+    // Règle d : Texte avant et après le @
+    if (localPart.length === 0 || domainPart.length === 0) return false;
+
+    // Règle b : Point dans le domaine, pas à la fin, et pas juste après le @
+    // (Le cas "test@.com" est géré ici car domainPart commence par un point)
+    if (!domainPart.includes('.') || domainPart.endsWith('.') || domainPart.startsWith('.')) {
         return false;
     }
 
