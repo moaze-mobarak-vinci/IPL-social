@@ -2,9 +2,9 @@ name: CI Email Validator
 
 on:
   push:
-    branches: [ main, feature-email-validation ]
+    branches: [main, feature-email-validation]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-test:
