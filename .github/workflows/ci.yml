@@ -11,9 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install
-      - run: npm test
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check formatting (Prettier)
+        run: npx prettier --check "src/**/*.ts" "tests/**/*.ts"
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Tests (Jest)
+        run: npm test
